@@ -1,32 +1,37 @@
-<!DOCTYPE html>
-
+f<!DOCTYPE html>
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <title>Second Highest Element</title>
 </head>
+<body>
 
-<body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+<script>
+  // Complete the function below
+  function secondHighest(arr) {
+    if (arr.length < 2) return -Infinity;
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
+    let max = -Infinity;
+    let secondMax = -Infinity;
 
-    <script type="text/javascript" src="./script.js">
+    for (let num of arr) {
+      if (num > max) {
+        secondMax = max;
+        max = num;
+      } else if (num < max && num > secondMax) {
+        secondMax = num;
+      }
+    }
+
+    return secondMax === -Infinity ? -Infinity : secondMax;
+  }
+
+  // ✅ Sample test cases (for verification)
+  console.log(secondHighest([5, 1, 2, 3, 4]));     // ➝ 4
+  console.log(secondHighest([-1, -2, -3, -4]));    // ➝ -2
+  console.log(secondHighest([]));                 // ➝ -Infinity
+  console.log(secondHighest([1]));                // ➝ -Infinity
+  console.log(secondHighest([1, 1, 1, 1, 1]));     // ➝ -Infinity
 </script>
 
 </body>
-
 </html>
